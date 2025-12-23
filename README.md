@@ -1,1 +1,1 @@
-# Resettle SDK JavaScript
+# Resettle SDK for JavaScript
