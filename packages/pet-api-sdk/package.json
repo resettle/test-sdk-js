@@ -1,0 +1,31 @@
+{
+  "name": "@resettle-oss/pet.json-api-sdk",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "homepage": "https://github.com/resettle/test-sdk-js/tree/main/packages/pet.json-api-sdk",
+  "author": {
+    "name": "Resettle Team",
+    "url": "https://resettle.ai"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/resettle/test-sdk-js.git",
+    "directory": "packages/pet.json-api-sdk"
+  },
+  "scripts": {
+    "build": "tsc --noEmit && tsdown"
+  },
+  "devDependencies": {
+    "tsdown": "0.18.2",
+    "typescript": "5.9.3"
+  }
+}
