@@ -1,243 +1,312 @@
 import type {
   GetUsers200ResponseInner,
   PostUsersRequest,
-} from '../models/index';
+} from '../models/index'
 import {
-    GetUsers200ResponseInnerFromJSON,
-    GetUsers200ResponseInnerToJSON,
-    PostUsersRequestFromJSON,
-    PostUsersRequestToJSON,
-} from '../models/index';
-import * as runtime from '../runtime';
+  GetUsers200ResponseInnerFromJSON,
+  GetUsers200ResponseInnerToJSON,
+  PostUsersRequestFromJSON,
+  PostUsersRequestToJSON,
+} from '../models/index'
+import * as runtime from '../runtime'
 
 export interface DeleteUsersUserIdRequest {
-    userId: string;
+  userId: string
 }
 
 export interface GetUsersRequest {
-    limit?: number;
-    page?: number;
+  limit?: number
+  page?: number
 }
 
 export interface GetUsersUserIdRequest {
-    userId: string;
+  userId: string
 }
 
 export interface PatchUsersUserIdRequest {
-    userId: string;
-    postUsersRequest?: PostUsersRequest;
+  userId: string
+  postUsersRequest?: PostUsersRequest
 }
 
 export interface PostUsersOperationRequest {
-    postUsersRequest?: PostUsersRequest;
+  postUsersRequest?: PostUsersRequest
 }
 
 /**
- * 
+ *
  */
 export class DefaultApi extends runtime.BaseAPI {
-
-    /**
-     * Delete user
-     */
-    async deleteUsersUserIdRaw(requestParameters: DeleteUsersUserIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<object>> {
-        if (requestParameters['userId'] == null) {
-            throw new runtime.RequiredError(
-                'userId',
-                'Required parameter "userId" was null or undefined when calling deleteUsersUserId().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["X-RapidAPI-Proxy-Secret"] = await this.configuration.apiKey("X-RapidAPI-Proxy-Secret"); // RapidAuth authentication
-        }
-
-
-        let urlPath = `/users/{userId}`;
-        urlPath = urlPath.replace(`{${"userId"}}`, encodeURIComponent(String(requestParameters['userId'])));
-
-        const response = await this.request({
-            path: urlPath,
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse<any>(response);
+  /**
+   * Delete user
+   */
+  async deleteUsersUserIdRaw(
+    requestParameters: DeleteUsersUserIdRequest,
+    initOverrides?: RequestInit | runtime.InitOverrideFunction,
+  ): Promise<runtime.ApiResponse<object>> {
+    if (requestParameters['userId'] == null) {
+      throw new runtime.RequiredError(
+        'userId',
+        'Required parameter "userId" was null or undefined when calling deleteUsersUserId().',
+      )
     }
 
-    /**
-     * Delete user
-     */
-    async deleteUsersUserId(requestParameters: DeleteUsersUserIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<object> {
-        const response = await this.deleteUsersUserIdRaw(requestParameters, initOverrides);
-        return await response.value();
+    const queryParameters: any = {}
+
+    const headerParameters: runtime.HTTPHeaders = {}
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters['X-RapidAPI-Proxy-Secret'] =
+        await this.configuration.apiKey('X-RapidAPI-Proxy-Secret') // RapidAuth authentication
     }
 
-    /**
-     * Get users
-     */
-    async getUsersRaw(requestParameters: GetUsersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<GetUsers200ResponseInner>>> {
-        const queryParameters: any = {};
+    let urlPath = `/users/{userId}`
+    urlPath = urlPath.replace(
+      `{${'userId'}}`,
+      encodeURIComponent(String(requestParameters['userId'])),
+    )
 
-        if (requestParameters['limit'] != null) {
-            queryParameters['limit'] = requestParameters['limit'];
-        }
+    const response = await this.request(
+      {
+        path: urlPath,
+        method: 'DELETE',
+        headers: headerParameters,
+        query: queryParameters,
+      },
+      initOverrides,
+    )
 
-        if (requestParameters['page'] != null) {
-            queryParameters['page'] = requestParameters['page'];
-        }
+    return new runtime.JSONApiResponse<any>(response)
+  }
 
-        const headerParameters: runtime.HTTPHeaders = {};
+  /**
+   * Delete user
+   */
+  async deleteUsersUserId(
+    requestParameters: DeleteUsersUserIdRequest,
+    initOverrides?: RequestInit | runtime.InitOverrideFunction,
+  ): Promise<object> {
+    const response = await this.deleteUsersUserIdRaw(
+      requestParameters,
+      initOverrides,
+    )
+    return await response.value()
+  }
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["X-RapidAPI-Proxy-Secret"] = await this.configuration.apiKey("X-RapidAPI-Proxy-Secret"); // RapidAuth authentication
-        }
+  /**
+   * Get users
+   */
+  async getUsersRaw(
+    requestParameters: GetUsersRequest,
+    initOverrides?: RequestInit | runtime.InitOverrideFunction,
+  ): Promise<runtime.ApiResponse<Array<GetUsers200ResponseInner>>> {
+    const queryParameters: any = {}
 
-
-        let urlPath = `/users`;
-
-        const response = await this.request({
-            path: urlPath,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(GetUsers200ResponseInnerFromJSON));
+    if (requestParameters['limit'] != null) {
+      queryParameters['limit'] = requestParameters['limit']
     }
 
-    /**
-     * Get users
-     */
-    async getUsers(requestParameters: GetUsersRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<GetUsers200ResponseInner>> {
-        const response = await this.getUsersRaw(requestParameters, initOverrides);
-        return await response.value();
+    if (requestParameters['page'] != null) {
+      queryParameters['page'] = requestParameters['page']
     }
 
-    /**
-     * Get user
-     */
-    async getUsersUserIdRaw(requestParameters: GetUsersUserIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUsers200ResponseInner>> {
-        if (requestParameters['userId'] == null) {
-            throw new runtime.RequiredError(
-                'userId',
-                'Required parameter "userId" was null or undefined when calling getUsersUserId().'
-            );
-        }
+    const headerParameters: runtime.HTTPHeaders = {}
 
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["X-RapidAPI-Proxy-Secret"] = await this.configuration.apiKey("X-RapidAPI-Proxy-Secret"); // RapidAuth authentication
-        }
-
-
-        let urlPath = `/users/{userId}`;
-        urlPath = urlPath.replace(`{${"userId"}}`, encodeURIComponent(String(requestParameters['userId'])));
-
-        const response = await this.request({
-            path: urlPath,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetUsers200ResponseInnerFromJSON(jsonValue));
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters['X-RapidAPI-Proxy-Secret'] =
+        await this.configuration.apiKey('X-RapidAPI-Proxy-Secret') // RapidAuth authentication
     }
 
-    /**
-     * Get user
-     */
-    async getUsersUserId(requestParameters: GetUsersUserIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUsers200ResponseInner> {
-        const response = await this.getUsersUserIdRaw(requestParameters, initOverrides);
-        return await response.value();
+    let urlPath = `/users`
+
+    const response = await this.request(
+      {
+        path: urlPath,
+        method: 'GET',
+        headers: headerParameters,
+        query: queryParameters,
+      },
+      initOverrides,
+    )
+
+    return new runtime.JSONApiResponse(response, jsonValue =>
+      jsonValue.map(GetUsers200ResponseInnerFromJSON),
+    )
+  }
+
+  /**
+   * Get users
+   */
+  async getUsers(
+    requestParameters: GetUsersRequest = {},
+    initOverrides?: RequestInit | runtime.InitOverrideFunction,
+  ): Promise<Array<GetUsers200ResponseInner>> {
+    const response = await this.getUsersRaw(requestParameters, initOverrides)
+    return await response.value()
+  }
+
+  /**
+   * Get user
+   */
+  async getUsersUserIdRaw(
+    requestParameters: GetUsersUserIdRequest,
+    initOverrides?: RequestInit | runtime.InitOverrideFunction,
+  ): Promise<runtime.ApiResponse<GetUsers200ResponseInner>> {
+    if (requestParameters['userId'] == null) {
+      throw new runtime.RequiredError(
+        'userId',
+        'Required parameter "userId" was null or undefined when calling getUsersUserId().',
+      )
     }
 
-    /**
-     * Update user
-     */
-    async patchUsersUserIdRaw(requestParameters: PatchUsersUserIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUsers200ResponseInner>> {
-        if (requestParameters['userId'] == null) {
-            throw new runtime.RequiredError(
-                'userId',
-                'Required parameter "userId" was null or undefined when calling patchUsersUserId().'
-            );
-        }
+    const queryParameters: any = {}
 
-        const queryParameters: any = {};
+    const headerParameters: runtime.HTTPHeaders = {}
 
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["X-RapidAPI-Proxy-Secret"] = await this.configuration.apiKey("X-RapidAPI-Proxy-Secret"); // RapidAuth authentication
-        }
-
-
-        let urlPath = `/users/{userId}`;
-        urlPath = urlPath.replace(`{${"userId"}}`, encodeURIComponent(String(requestParameters['userId'])));
-
-        const response = await this.request({
-            path: urlPath,
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PostUsersRequestToJSON(requestParameters['postUsersRequest']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetUsers200ResponseInnerFromJSON(jsonValue));
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters['X-RapidAPI-Proxy-Secret'] =
+        await this.configuration.apiKey('X-RapidAPI-Proxy-Secret') // RapidAuth authentication
     }
 
-    /**
-     * Update user
-     */
-    async patchUsersUserId(requestParameters: PatchUsersUserIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUsers200ResponseInner> {
-        const response = await this.patchUsersUserIdRaw(requestParameters, initOverrides);
-        return await response.value();
+    let urlPath = `/users/{userId}`
+    urlPath = urlPath.replace(
+      `{${'userId'}}`,
+      encodeURIComponent(String(requestParameters['userId'])),
+    )
+
+    const response = await this.request(
+      {
+        path: urlPath,
+        method: 'GET',
+        headers: headerParameters,
+        query: queryParameters,
+      },
+      initOverrides,
+    )
+
+    return new runtime.JSONApiResponse(response, jsonValue =>
+      GetUsers200ResponseInnerFromJSON(jsonValue),
+    )
+  }
+
+  /**
+   * Get user
+   */
+  async getUsersUserId(
+    requestParameters: GetUsersUserIdRequest,
+    initOverrides?: RequestInit | runtime.InitOverrideFunction,
+  ): Promise<GetUsers200ResponseInner> {
+    const response = await this.getUsersUserIdRaw(
+      requestParameters,
+      initOverrides,
+    )
+    return await response.value()
+  }
+
+  /**
+   * Update user
+   */
+  async patchUsersUserIdRaw(
+    requestParameters: PatchUsersUserIdRequest,
+    initOverrides?: RequestInit | runtime.InitOverrideFunction,
+  ): Promise<runtime.ApiResponse<GetUsers200ResponseInner>> {
+    if (requestParameters['userId'] == null) {
+      throw new runtime.RequiredError(
+        'userId',
+        'Required parameter "userId" was null or undefined when calling patchUsersUserId().',
+      )
     }
 
-    /**
-     * Create user
-     */
-    async postUsersRaw(requestParameters: PostUsersOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUsers200ResponseInner>> {
-        const queryParameters: any = {};
+    const queryParameters: any = {}
 
-        const headerParameters: runtime.HTTPHeaders = {};
+    const headerParameters: runtime.HTTPHeaders = {}
 
-        headerParameters['Content-Type'] = 'application/json';
+    headerParameters['Content-Type'] = 'application/json'
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["X-RapidAPI-Proxy-Secret"] = await this.configuration.apiKey("X-RapidAPI-Proxy-Secret"); // RapidAuth authentication
-        }
-
-
-        let urlPath = `/users`;
-
-        const response = await this.request({
-            path: urlPath,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PostUsersRequestToJSON(requestParameters['postUsersRequest']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetUsers200ResponseInnerFromJSON(jsonValue));
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters['X-RapidAPI-Proxy-Secret'] =
+        await this.configuration.apiKey('X-RapidAPI-Proxy-Secret') // RapidAuth authentication
     }
 
-    /**
-     * Create user
-     */
-    async postUsers(requestParameters: PostUsersOperationRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUsers200ResponseInner> {
-        const response = await this.postUsersRaw(requestParameters, initOverrides);
-        return await response.value();
+    let urlPath = `/users/{userId}`
+    urlPath = urlPath.replace(
+      `{${'userId'}}`,
+      encodeURIComponent(String(requestParameters['userId'])),
+    )
+
+    const response = await this.request(
+      {
+        path: urlPath,
+        method: 'PATCH',
+        headers: headerParameters,
+        query: queryParameters,
+        body: PostUsersRequestToJSON(requestParameters['postUsersRequest']),
+      },
+      initOverrides,
+    )
+
+    return new runtime.JSONApiResponse(response, jsonValue =>
+      GetUsers200ResponseInnerFromJSON(jsonValue),
+    )
+  }
+
+  /**
+   * Update user
+   */
+  async patchUsersUserId(
+    requestParameters: PatchUsersUserIdRequest,
+    initOverrides?: RequestInit | runtime.InitOverrideFunction,
+  ): Promise<GetUsers200ResponseInner> {
+    const response = await this.patchUsersUserIdRaw(
+      requestParameters,
+      initOverrides,
+    )
+    return await response.value()
+  }
+
+  /**
+   * Create user
+   */
+  async postUsersRaw(
+    requestParameters: PostUsersOperationRequest,
+    initOverrides?: RequestInit | runtime.InitOverrideFunction,
+  ): Promise<runtime.ApiResponse<GetUsers200ResponseInner>> {
+    const queryParameters: any = {}
+
+    const headerParameters: runtime.HTTPHeaders = {}
+
+    headerParameters['Content-Type'] = 'application/json'
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters['X-RapidAPI-Proxy-Secret'] =
+        await this.configuration.apiKey('X-RapidAPI-Proxy-Secret') // RapidAuth authentication
     }
 
+    let urlPath = `/users`
+
+    const response = await this.request(
+      {
+        path: urlPath,
+        method: 'POST',
+        headers: headerParameters,
+        query: queryParameters,
+        body: PostUsersRequestToJSON(requestParameters['postUsersRequest']),
+      },
+      initOverrides,
+    )
+
+    return new runtime.JSONApiResponse(response, jsonValue =>
+      GetUsers200ResponseInnerFromJSON(jsonValue),
+    )
+  }
+
+  /**
+   * Create user
+   */
+  async postUsers(
+    requestParameters: PostUsersOperationRequest = {},
+    initOverrides?: RequestInit | runtime.InitOverrideFunction,
+  ): Promise<GetUsers200ResponseInner> {
+    const response = await this.postUsersRaw(requestParameters, initOverrides)
+    return await response.value()
+  }
 }

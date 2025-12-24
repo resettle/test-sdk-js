@@ -35,6 +35,9 @@ export default defineConfig([
   },
   {
     files: ['packages/*/src/**/*.ts'],
-    ignores: ['packages/*/src/**/*.spec.ts'],
+    ignores: [
+      'packages/*/src/**/*.spec.ts',
+      'packages/*/src/**/tsdown.config.ts',
+    ],
   },
 ])
