@@ -5,6 +5,15 @@
   "private": true,
   "type": "module",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "8.50.1",
+    "@typescript-eslint/parser": "8.50.1",
+    "eslint": "9.39.2",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-prettier": "5.5.4",
+    "eslint-plugin-simple-import-sort": "12.1.1",
+    "eslint-plugin-sort-export-all": "2.1.0",
+    "husky": "9.1.7",
+    "lint-staged": "16.2.7",
     "prettier": "3.7.4",
     "tsx": "4.21.0"
   },
@@ -13,7 +22,7 @@
     "url": "git@github.com:resettle/test-sdk-js.git"
   },
   "author": {
-    "name": "Resettle",
+    "name": "Resettle Team",
     "url": "https://resettle.ai"
   },
   "license": "MIT",
@@ -22,5 +31,14 @@
       "esbuild"
     ]
   },
-  "packageManager": "pnpm@10.26.0+sha512.3b3f6c725ebe712506c0ab1ad4133cf86b1f4b687effce62a9b38b4d72e3954242e643190fc51fa1642949c735f403debd44f5cb0edd657abe63a8b6a7e1e402"
+  "packageManager": "pnpm@10.26.0+sha512.3b3f6c725ebe712506c0ab1ad4133cf86b1f4b687effce62a9b38b4d72e3954242e643190fc51fa1642949c735f403debd44f5cb0edd657abe63a8b6a7e1e402",
+  "lint-staged": {
+    "*.ts": "eslint --cache --fix"
+  },
+  "scripts": {
+    "build": "pnpm -r --filter './**/*' build",
+    "lint": "eslint --cache --fix",
+    "prepare": "husky",
+    "prettify": "prettier . --write"
+  }
 }
