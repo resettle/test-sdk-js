@@ -9,7 +9,7 @@ importers:
   .:
     devDependencies:
       '@changesets/cli':
-        specifier: ^2.29.8
+        specifier: 2.29.8
         version: 2.29.8
       '@typescript-eslint/eslint-plugin':
         specifier: 8.50.1
