@@ -5,6 +5,7 @@
   "private": true,
   "type": "module",
   "devDependencies": {
+    "@changesets/cli": "2.29.8",
     "@typescript-eslint/eslint-plugin": "8.50.1",
     "@typescript-eslint/parser": "8.50.1",
     "eslint": "9.39.2",
@@ -33,6 +34,8 @@
   "scripts": {
     "build": "pnpm -r --filter './**/*' build",
     "lint": "eslint --cache --fix",
-    "prettify": "prettier --write packages/*/src/**/*.ts"
+    "prettify": "prettier --write packages/*/src/**/*.ts",
+    "publish": "pnpm publish",
+    "ci:publish": "pnpm publish -r"
   }
 }
