@@ -35,7 +35,7 @@
     "build": "pnpm -r --filter './**/*' build",
     "lint": "eslint --cache --fix",
     "prettify": "prettier --write packages/*/src/**/*.ts",
-    "publish": "pnpm publish",
+    "publish": "pnpm publish -r",
     "ci:publish": "pnpm publish -r"
   }
 }
