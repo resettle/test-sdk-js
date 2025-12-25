@@ -10,6 +10,10 @@ import {
 } from '../models/index'
 import * as runtime from '../runtime'
 
+export interface DeleteUsersUserIdRequest {
+  userId: string
+}
+
 export interface GetUsersRequest {
   limit?: number
   page?: number
@@ -32,6 +36,62 @@ export interface PostUsersOperationRequest {
  *
  */
 export class DefaultApi extends runtime.BaseAPI {
+  /**
+   * Delete user
+   */
+  async deleteUsersUserIdRaw(
+    requestParameters: DeleteUsersUserIdRequest,
+    initOverrides?: RequestInit | runtime.InitOverrideFunction,
+  ): Promise<runtime.ApiResponse<object>> {
+    if (requestParameters['userId'] == null) {
+      throw new runtime.RequiredError(
+        'userId',
+        'Required parameter "userId" was null or undefined when calling deleteUsersUserId().',
+      )
+    }
+
+    const queryParameters: any = {}
+
+    const headerParameters: runtime.HTTPHeaders = {}
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters['X-RapidAPI-Proxy-Secret'] =
+        await this.configuration.apiKey('X-RapidAPI-Proxy-Secret') // RapidAuth authentication
+    }
+
+    let urlPath = `/users/{userId}`
+    urlPath = urlPath.replace(
+      `{${'userId'}}`,
+      encodeURIComponent(String(requestParameters['userId'])),
+    )
+
+    const response = await this.request(
+      {
+        path: urlPath,
+        method: 'DELETE',
+        headers: headerParameters,
+        query: queryParameters,
+      },
+      initOverrides,
+    )
+
+    return new runtime.JSONApiResponse<any>(response)
+  }
+
+  /**
+   * Delete user
+   */
+  async deleteUsersUserId(
+    requestParameters: DeleteUsersUserIdRequest,
+    initOverrides?: RequestInit | runtime.InitOverrideFunction,
+  ): Promise<object> {
+    const response = await this.deleteUsersUserIdRaw(
+      requestParameters,
+      initOverrides,
+    )
+    return await response.value()
+  }
+
   /**
    * Get users
    */
