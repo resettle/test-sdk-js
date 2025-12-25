@@ -2,6 +2,11 @@ name: Build and publish
 
 on:
   workflow_dispatch: {}
+  push:
+    branches:
+      - main
+    paths:
+      - packages/**
 
 permissions:
   id-token: write
@@ -28,3 +33,6 @@ jobs:
 
       - name: Build all
         run: pnpm build
+
+      - name: Publish
+        run: pnpm publish:ci
