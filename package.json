@@ -1,5 +1,5 @@
 {
-  "name": "@resettle-oss/sdk-js",
+  "name": "sdk-js",
   "version": "0.0.0",
   "description": "Resettle SDK for JavaScript",
   "private": true,
@@ -36,6 +36,6 @@
     "bump": "pnpm changeset version",
     "lint": "eslint --cache --fix",
     "prettify": "prettier --write packages/*/src/**/*.ts",
-    "publish": "pnpm publish -r --access public"
+    "publish": "pnpm publish -r --access public --filter @resettle-oss/*"
   }
 }
