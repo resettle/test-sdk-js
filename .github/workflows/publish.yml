@@ -37,7 +37,7 @@ jobs:
       - name: Publish
         id: publish
         run: |
-          PUBLISHED=$(pnpm publish:ci --json)
+          PUBLISHED=$(pnpm publish:ci)
           echo "published=$PUBLISHED" >> $GITHUB_OUTPUT
 
       - name: Send telegram message
