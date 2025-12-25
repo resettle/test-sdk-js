@@ -188,35 +188,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deletePets:petId",
-        "description": "Delete pet",
-        "responses": {
-          "200": {
-            "description": "Pet deleted successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "in": "path",
-            "name": "petId",
-            "schema": {
-              "type": "string",
-              "format": "uuid",
-              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-            },
-            "required": true
-          }
-        ]
-      },
       "get": {
         "operationId": "getPets:petId",
         "description": "Get pet",

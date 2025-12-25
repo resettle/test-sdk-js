@@ -7,10 +7,6 @@ import {
 } from '../models/index'
 import * as runtime from '../runtime'
 
-export interface DeletePetsPetIdRequest {
-  petId: string
-}
-
 export interface GetPetsRequest {
   limit?: number
   page?: number
@@ -33,62 +29,6 @@ export interface PostPetsOperationRequest {
  *
  */
 export class DefaultApi extends runtime.BaseAPI {
-  /**
-   * Delete pet
-   */
-  async deletePetsPetIdRaw(
-    requestParameters: DeletePetsPetIdRequest,
-    initOverrides?: RequestInit | runtime.InitOverrideFunction,
-  ): Promise<runtime.ApiResponse<object>> {
-    if (requestParameters['petId'] == null) {
-      throw new runtime.RequiredError(
-        'petId',
-        'Required parameter "petId" was null or undefined when calling deletePetsPetId().',
-      )
-    }
-
-    const queryParameters: any = {}
-
-    const headerParameters: runtime.HTTPHeaders = {}
-
-    if (this.configuration && this.configuration.apiKey) {
-      headerParameters['X-RapidAPI-Proxy-Secret'] =
-        await this.configuration.apiKey('X-RapidAPI-Proxy-Secret') // RapidAuth authentication
-    }
-
-    let urlPath = `/pets/{petId}`
-    urlPath = urlPath.replace(
-      `{${'petId'}}`,
-      encodeURIComponent(String(requestParameters['petId'])),
-    )
-
-    const response = await this.request(
-      {
-        path: urlPath,
-        method: 'DELETE',
-        headers: headerParameters,
-        query: queryParameters,
-      },
-      initOverrides,
-    )
-
-    return new runtime.JSONApiResponse<any>(response)
-  }
-
-  /**
-   * Delete pet
-   */
-  async deletePetsPetId(
-    requestParameters: DeletePetsPetIdRequest,
-    initOverrides?: RequestInit | runtime.InitOverrideFunction,
-  ): Promise<object> {
-    const response = await this.deletePetsPetIdRaw(
-      requestParameters,
-      initOverrides,
-    )
-    return await response.value()
-  }
-
   /**
    * Get users
    */
