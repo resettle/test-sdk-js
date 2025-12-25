@@ -36,6 +36,6 @@
     "bump": "pnpm changeset version",
     "lint": "eslint --cache --fix",
     "prettify": "prettier --write packages/*/src/**/*.ts",
-    "publish": "pnpm --filter \"./packages/**\" publish -r --access public"
+    "publish:ci": "pnpm --filter \"./packages/**\" publish -r --access public"
   }
 }
